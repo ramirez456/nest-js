@@ -15,6 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsController = void 0;
 const common_1 = require("@nestjs/common");
 const products_service_1 = require("./../services/products.service");
+const parse_int_pipe_1 = require("./../common/parse-int.pipe");
+const productos_dtos_1 = require("./../dtos/productos.dtos");
 let ProductsController = class ProductsController {
     constructor(productService) {
         this.productService = productService;
@@ -22,21 +24,14 @@ let ProductsController = class ProductsController {
     getProducts(limit = 100, offset = 0, brand) {
         return this.productService.findAll();
     }
-    getProductFilter() {
-        return `Filter de productos`;
-    }
-    getOne(response, productId) {
+    getOne(productId) {
         return this.productService.findOne(productId);
     }
     create(payload) {
         return this.productService.create(payload);
     }
     update(id, payload) {
-        return {
-            message: 'accion de actualizar',
-            id,
-            payload
-        };
+        return this.productService.update(id, payload);
     }
     delete(id) {
         return {
@@ -55,33 +50,25 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getProducts", null);
 __decorate([
-    (0, common_1.Get)('/filter'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], ProductsController.prototype, "getProductFilter", null);
-__decorate([
     (0, common_1.Get)('/:productId'),
-    (0, common_1.HttpCode)(common_1.HttpStatus.ACCEPTED),
-    __param(0, (0, common_1.Res)()),
-    __param(1, (0, common_1.Param)('productId')),
+    __param(0, (0, common_1.Param)('productId', parse_int_pipe_1.ParseIntPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Number]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getOne", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [productos_dtos_1.CreateProductDto]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', parse_int_pipe_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:paramtypes", [Number, productos_dtos_1.UpdateProductDto]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "update", null);
 __decorate([

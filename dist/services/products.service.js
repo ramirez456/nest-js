@@ -24,7 +24,11 @@ let ProductsService = class ProductsService {
         return this.products;
     }
     findOne(id) {
-        return this.products.find((item) => item.id === id);
+        let product = this.products.find((item) => item.id == id);
+        if (!product) {
+            throw new common_1.NotFoundException(`product #${id} not found`);
+        }
+        return product;
     }
     create(payload) {
         this.counterId++;
@@ -35,8 +39,8 @@ let ProductsService = class ProductsService {
     update(id, payload) {
         const product = this.findOne(id);
         if (product) {
-            const index = this.products.findIndex((item) => item.id === id);
-            this.products[index] = payload;
+            const index = this.products.findIndex((item) => item.id == id);
+            this.products[index] = Object.assign(Object.assign({}, product), payload);
             return this.products[index];
         }
         return null;
