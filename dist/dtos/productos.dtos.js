@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateProductDto = exports.CreateProductDto = void 0;
 const class_validator_1 = require("class-validator");
+const mapped_types_1 = require("@nestjs/mapped-types");
 class CreateProductDto {
 }
 __decorate([
@@ -41,7 +42,7 @@ __decorate([
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "image", void 0);
 exports.CreateProductDto = CreateProductDto;
-class UpdateProductDto {
+class UpdateProductDto extends (0, mapped_types_1.PartialType)(CreateProductDto) {
 }
 exports.UpdateProductDto = UpdateProductDto;
 //# sourceMappingURL=productos.dtos.js.map
