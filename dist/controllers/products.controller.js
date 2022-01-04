@@ -14,14 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsController = void 0;
 const common_1 = require("@nestjs/common");
-const products_service_1 = require("./../services/products.service");
+const products_service_1 = require("../services/products/products.service");
 const parse_int_pipe_1 = require("./../common/parse-int.pipe");
 const productos_dtos_1 = require("./../dtos/productos.dtos");
 let ProductsController = class ProductsController {
     constructor(productService) {
         this.productService = productService;
     }
-    getProducts(limit = 100, offset = 0, brand) {
+    getProducts(limit, offset) {
         return this.productService.findAll();
     }
     getOne(productId) {
@@ -34,19 +34,15 @@ let ProductsController = class ProductsController {
         return this.productService.update(id, payload);
     }
     delete(id) {
-        return {
-            id,
-            message: `accion de eliminarel producto ${id}`
-        };
+        return this.productService.delete(id);
     }
 };
 __decorate([
     (0, common_1.Get)(''),
     __param(0, (0, common_1.Query)('limit')),
     __param(1, (0, common_1.Query)('offset')),
-    __param(2, (0, common_1.Query)('brand')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number, String]),
+    __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getProducts", null);
 __decorate([

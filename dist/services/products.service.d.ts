@@ -7,4 +7,5 @@ export declare class ProductsService {
     findOne(id: number): Product;
     create(payload: any): any;
     update(id: number, payload: UpdateProductDto): Product;
+    delete(id: number): Product;
 }

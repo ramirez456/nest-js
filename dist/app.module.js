@@ -16,14 +16,17 @@ const orders_controller_1 = require("./controllers/orders.controller");
 const users_controller_1 = require("./controllers/users.controller");
 const customers_controller_1 = require("./controllers/customers.controller");
 const brands_controller_1 = require("./controllers/brands.controller");
-const products_service_1 = require("./services/products.service");
+const products_service_1 = require("./services/products/products.service");
+const brands_service_1 = require("./services/brands/brands.service");
+const categories_service_1 = require("./services/categories/categories.service");
+const users_service_1 = require("./services/users/users.service");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [],
         controllers: [app_controller_1.AppController, products_controller_1.ProductsController, categories_controller_1.CategoriesController, orders_controller_1.OrdersController, users_controller_1.UsersController, customers_controller_1.CustomersController, brands_controller_1.BrandsController],
-        providers: [app_service_1.AppService, products_service_1.ProductsService],
+        providers: [app_service_1.AppService, products_service_1.ProductsService, brands_service_1.BrandsService, categories_service_1.CategoriesService, users_service_1.UsersService],
     })
 ], AppModule);
 exports.AppModule = AppModule;

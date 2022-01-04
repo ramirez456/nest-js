@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, Query } from '@nestjs/common';
-import {ProductsService} from './../services/products.service'
+import {ProductsService} from '../services/products/products.service'
 import {ParseIntPipe} from './../common/parse-int.pipe';
 import {CreateProductDto, UpdateProductDto} from './../dtos/productos.dtos'
 @Controller('products')
@@ -11,9 +11,8 @@ export class ProductsController {
 
     @Get('')
     getProducts(
-        @Query('limit') limit: number = 100,
-        @Query('offset') offset: number = 0,
-        @Query('brand') brand: string
+        @Query('limit') limit: number,
+        @Query('offset') offset: number
     ){
         return this.productService.findAll();
     }
@@ -30,15 +29,12 @@ export class ProductsController {
 
     @Put(':id')
     update(@Param('id', ParseIntPipe) id: number, @Body() payload: UpdateProductDto){
-        return this.productService.update(id, payload)
+        return this.productService.update(id, payload);
     }
 
     @Delete(':id')
     delete(@Param('id') id: number){
-        return {
-            id,
-            message: `accion de eliminarel producto ${id}`
-        }
+        return this.productService.delete(id);
     }
 
 

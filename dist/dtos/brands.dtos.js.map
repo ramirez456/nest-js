@@ -1,0 +1,1 @@
+{"version":3,"file":"brands.dtos.js","sourceRoot":"","sources":["../../src/dtos/brands.dtos.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,qDAAuD;AACvD,uDAAmD;AAEnD,MAAa,cAAc;CAS1B;AALG;IAFC,IAAA,0BAAQ,GAAE;IACV,IAAA,4BAAU,GAAE;;4CACS;AAItB;IAFC,IAAA,0BAAQ,GAAE;IACV,IAAA,4BAAU,GAAE;;mDACgB;AARjC,wCASC;AAED,MAAa,cAAe,SAAQ,IAAA,0BAAW,EAAC,cAAc,CAAC;CAAE;AAAjE,wCAAiE"}
